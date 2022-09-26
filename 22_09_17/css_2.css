@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Nabla&display=swap');
+
+body>div{
+    background-color: rgb(250, 239, 225)!important;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    background-color: rgb(193, 193, 193);
+    min-width: 1400px;
+}
+h1{
+    color:#000066;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 700;
+    font-size: 50px;
+    margin: 0;
+    font-family: 'Bungee Spice', cursive;
+}
+p{
+    margin-top: auto;
+    margin-bottom: 0px;
+    color:#008080;
+    font-family: 'Bungee Spice', cursive;
+    font-family: 'Nabla', cursive;
+    font-weight: 700;
+    font-size: 16px;
+}
+table,th,td{
+    border: 1px solid black;
+    border-collapse: collapse;
+    font-style: italic;
+}
+table{
+    width:100%;
+    font-size: 18px;
+    background-color: rgb(255, 246, 179);
+}
+th, td{
+    text-align: center;
+    height: 40px;
+}
+th{
+    font-weight: 400;
+    
+}
+.table_blue{
+    background-color: #ff9e80;
+    font-family: 'Bungee Spice', cursive;
+}
+.table_gray{
+    background-color: #ff5b09;
+    font-family: 'Bungee Spice', cursive;
+font-family: 'Nabla', cursive;
+}
+img{
+    object-fit: cover;
+    width: 100%;
+    height: 258px;
+}
