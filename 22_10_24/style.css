@@ -1,0 +1,58 @@
+.calculator{
+    width: 300px;
+    aspect-ratio: 3/4;
+    padding: 20px;
+    background-color: rgb(166, 166, 245);
+    margin-top: 200px;
+    border-radius: .5rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px -50px 36px -28px inset;
+}
+input{
+    width: 100%;
+    margin: 10px 0px;
+    height: 30px;
+    border: none;
+    border-radius: .5rem;
+}
+div#expression{
+    background-color: white;
+    border-radius: 1rem;
+    height: 2rem;
+    cursor:text;
+    margin: 10px 0px;
+    display: flex;
+    align-items: center;
+    padding: 0px 10px;
+}
+div#result{
+    background-color: white;
+    border-radius: 1rem;
+    height: 2rem;
+    cursor:text;
+    margin: 10px 0px;
+    display: flex;
+    align-items: center;
+    padding: 0px 10px;
+}
+.btn_num{
+    background-color: white;
+}
+.btn_addn{
+    background-color: violet;
+}
+.btn_backspace{
+    background-color: red;
+}
+
+button{
+    width: 23.5%;
+    padding: 5px;
+    margin: 5px 0px;
+    border-radius: .5rem;
+    height: 45px;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+button:hover{
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}

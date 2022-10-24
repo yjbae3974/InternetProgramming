@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let expression;
+        expression = prompt("Type the proper expression for calculation")
+        console.log(expression);
+
+        function calculate(expression) {
+
+var 연산자 = {   //각 글자들을 정의한 문자들. object로 구현.
+  add: '+',
+  sub: '-',
+  div: '/',
+  mlt: '*',
+  mod: '%',
+  exp: '^'
+};
+
+// 순서는 곱셈, 나눗셈, 나머지, 승, 그 다음 더하기 빼기임.
+연산자.순서 = [
+  [
+    [연산자.mlt],
+    [연산자.div],
+    [연산자.mod],
+    [연산자.exp]
+  ],
+  [
+    [연산자.add],
+    [연산자.sub]
+  ]
+];
+
+expression = expression.replace(/[^0-9%^*\/()\-+.]/g, ''); // 0~9까지, 그리고 나눗셈,승,mod,괄호, 더하기, 빼기를 받음.
+
+var output;
+for (var i = 0, n = 연산자.순서.length; i < n; i++) {
+
+  // Regular Expression to look for operators between floating numbers or integers
+  var re = new RegExp('(\\d+\\.?\\d*)([\\' + 연산자.순서[i].join('\\') + '])(\\d+\\.?\\d*)');
+  re.lastIndex = 0; // take precautions and reset re starting pos
+    console.log(re);
+  // Loop while there is still calculation for level of precedence
+  while (re.test(expression)) {
+    output = _calculate(RegExp.$1, RegExp.$2, RegExp.$3);
+    if (isNaN(output) || !isFinite(output)) 
+      return output; // exit early if not a number
+    input = input.replace(re, output);
+  }
+}
+
+return output;
+
+function _calculate(a, op, b) {
+  a = a * 1;
+  b = b * 1;
+  switch (op) {
+    case 연산자.add:
+      return a + b;
+      break;
+    case 연산자.sub:
+      return a - b;
+      break;
+    case 연산자.div:
+      return a / b;
+      break;
+    case 연산자.mlt:
+      return a * b;
+      break;
+    case 연산자.mod:
+      return a % b;
+      break;
+    case 연산자.exp:
+      return Math.pow(a, b);
+      break;
+    default:
+      null;
+  }
+}
+}
+let output = calculate(expression)
+console.log(output)
+    </script>
+</head>
+<body>
+    <p>간단한 계산기</p>
+    
+</body>
+</html>

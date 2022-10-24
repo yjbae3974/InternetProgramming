@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body style="display: flex;justify-content: center;height: 100%">
+    <div class="calculator">
+        <div id="expression"></div>
+        <div id="result"></div>
+        <div style="display: flex; justify-content:center;width: 308px;margin-top: 30px;">
+            <div style="width: 100%">
+                <button class="btn_addn" onclick="add_string('%')">%</button>
+                <button class="btn_addn" onclick="add_string('(')">(</button>
+                <button class="btn_addn" onclick="add_string(')')">)</button>
+                <button class="btn_addn" onclick="delete_btn()">del</button>              
+                <button class="btn_num" onclick="add_string('1')">1</button>
+                <button class="btn_num" onclick="add_string('2')">2</button>
+                <button class="btn_num" onclick="add_string('3')">3</button>
+                <button class="btn_addn" onclick="add_string('+')">+</button>
+                <button class="btn_num" onclick="add_string('4')">4</button>
+                <button class="btn_num" onclick="add_string('5')">5</button>
+                <button class="btn_num" onclick="add_string('6')">6</button>
+                <button class="btn_addn" onclick="add_string('-')">-</button>
+                <button class="btn_num" onclick="add_string('7')">7</button>
+                <button class="btn_num" onclick="add_string('8')">8</button>
+                <button class="btn_num" onclick="add_string('9')">9</button>
+                <button class="btn_addn" onclick="add_string('*')">*</button>
+                <button class="btn_addn" onclick="reset_all()">c</button>
+                <button class="btn_num" onclick="add_string('0')">0</button>
+                <button class="btn_addn" onclick="calculate()">=</button>
+                <button class="btn_addn" onclick="add_string('/')">/</button>
+                <button class="btn_addn" onclick="add_string('.')">.</button>
+            </div>
+        </div>
+        
+    </div>
+   
+</body>
+<script>
+    let string = [];
+    let result;
+    let exp = document.getElementById("expression");
+    let res = document.getElementById("result");
+    function add_string(a){
+        string.push(a);
+        console.log(string)
+        exp.innerText = string.join("");
+    }
+    function calculate(){
+        result = eval(string.join(""));
+        res.innerHTML = result;
+    }
+    function delete_btn(){
+        string.pop();
+        exp.innerText = string.join("");
+    }
+    function reset_all(){
+        string = [];
+        result = '';
+        exp.innerText = string.join("");
+        res.innerHTML = result;
+    }
+    </script>
+</html>

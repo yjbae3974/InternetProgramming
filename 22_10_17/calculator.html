@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+
+
+
+
+    let expression;
+    expression = prompt("type the proper expression");
+    function solution(expression) {
+	const split = expression.split('');
+    const stack = [];
+	let answer = '';
+	for (let i = 0; i < split.length; i += 1) {
+		const str = split[i];
+		
+		if (str === '(') {
+			stack.push(str);
+		} else if (str === ')') {
+			while (stack.length && stack[stack.length - 1] !== '(') {
+				answer += stack.pop();
+			}
+			stack.pop();
+		} else if (str === '*' || str === '/') {
+			while (stack.length && stack[stack.length - 1] === '*' || stack[stack.length - 1] === '/') {
+				answer += stack.pop();
+			}
+			stack.push(str);
+		} else if (str === '+' || str === '-') {
+			while (stack.length && stack[stack.length - 1] !== '(') {
+				answer += stack.pop();
+			}
+			stack.push(str);
+		} else {
+			answer += str;
+		}
+	}
+
+	while (stack.length) {
+		answer += stack.pop();
+	}
+
+	return answer;
+}
+function calculate(postfix){// A+B*C-D/E ABC*+DE/-
+    const input = postfix.split('');
+    const stack = [];
+    let tmp;
+    for(let i = 0; i< input.length;i++){
+        if(input[i] === '+'){
+            tmp = stack.pop();
+            stack[stack.length-1] += tmp;
+        }
+        else if(input[i] === '-'){
+            tmp = stack.pop();
+            stack[stack.length-1] -= tmp;
+        }
+        else if(input[i] === '*'){
+            tmp = stack.pop();
+            stack[stack.length-1] *= tmp;
+        }
+        else if(input[i] === '/'){
+            tmp = stack.pop();
+            stack[stack.length-1] /= tmp;
+        }
+        else if(input[i] === '%'){
+            tmp = stack.pop();
+            stack[stack.length-1] %= tmp;
+        }
+        else{
+            stack.push(parseInt(input[i]));
+        }
+    }
+    return stack[0];
+}
+console.log(calculate(solution(expression)));
+
+</script>
+<body>
+    <div id="exp"></div>
+    <div id="postfix"></div>
+    <div id="result"></div>
+</body>
+<script>
+document.getElementById("exp").innerText = expression;
+document.getElementById("postfix").innerText = solution(expression);
+document.getElementById("result").innerText = calculate(solution(expression));
+</script>
+</html>
