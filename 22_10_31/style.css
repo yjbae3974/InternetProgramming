@@ -1,0 +1,61 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+.background{
+    background-color: #E7DFD0;
+    text-align: center;
+}
+.main{
+    height: 100vh;
+    background-color: #E7DFD0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.memory-game{
+    display: grid;
+    width: 75%;
+    grid-template-columns: repeat(6,1fr);
+    grid-template-rows: repeat(4,140px);
+    gap: 5px;
+    perspective: 1000px;
+}
+.memory-card{
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    height: 100%;
+    position: relative;
+    transform: scale(1);
+    transform-style: preserve-3d;
+    transition: transform .5s;
+}
+.memory-card:active {
+    transform: scale(0.97);
+    transition: transform .2s;
+}
+.memory-card.flip{
+    transform: rotateY(180deg);
+}
+.memory-card > img{
+    
+}
+.img-front{
+    transform: rotateY(180deg);
+}
+.img-front, .img-back{
+    backface-visibility: hidden;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    object-fit: contain;
+}
