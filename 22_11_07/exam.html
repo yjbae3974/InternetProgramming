@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style2.css">
+    <title>Number System Converter</title>
+    <style>
+        .grid{
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(5,1fr);
+            grid-template-rows: repeat(6,1fr);
+            gap: 5px;
+            padding: 20px;
+            border-radius: 1rem;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+            width: 600px;
+            height: 600px;
+            background-color: #8B0028;
+        }
+        .grid.animation{
+            animation-name: Rocks;
+            animation-duration: 4s;
+            animation-delay: 2s;
+        }
+        @keyframes Rocks {
+            0%   {background-color:crimson; left:0px; top:0px;}
+            25%  {background-color:#E7DFD0; left:400px; top:0px;}
+            50%  {background-color:skyblue; left:400px; top:400px;}
+            75%  {background-color:green; left:-400px; top:400px;}
+            100% {background-color:crimson; left:0px; top:0px;}
+}
+        .input{
+            grid-column: 1/5;
+            margin: 20px;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+        }
+        .select{
+            grid-column: 5/6;
+            margin: 20px;
+            font-size: 20px;
+            border: none;
+            padding: 10px;
+        }
+        .btn{
+            margin: 20px;
+            /* border: 1px solid crimson; */
+            border-radius: .5rem;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+        }
+        .btn:hover{
+            /* box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset; */
+            cursor: pointer;
+            animation-name: click;
+            animation-duration: .2s;
+            animation-delay: .0s;
+            animation-fill-mode: forwards;
+
+        }
+        @keyframes click {
+            from{box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;}
+            to{box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;}
+        }
+        .btn_long{
+            grid-column: span 2;
+            margin: 20px;
+            border: 1px solid crimson;
+            border-radius: .5rem;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+        }
+        .btn_long:hover{
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body style="display: flex;justify-content: center;height: 100%; flex-direction: column;align-items: center;background-color: #E7DFD0;">
+    <h1 style="color: crimson;">Number System Converter!!</h1>
+    <h4>2020170976 배연준</h2>
+    <div class="grid" id="grid">
+        <div class="input" id="input"></div>
+        <select name="" id="from" onchange="changeFrom(this)" class="select">
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+            <option value="16">16</option>
+        </select>
+        <div class="input" id="output"></div>
+        <select name="" id="to" onchange="changeTo(this)" class="select">
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+            <option value="16">16</option>
+        </select>
+        <div class="btn" onclick="add_string(0)">0</div>
+        <div class="btn" onclick="add_string(1)">1</div>
+        <div class="btn" onclick="add_string(2)">2</div>
+        <div class="btn" onclick="add_string(3)">3</div>
+        <div class="btn" onclick="add_string(4)">4</div>
+        <div class="btn" onclick="add_string(5)">5</div>
+        <div class="btn" onclick="add_string(6)">6</div>
+        <div class="btn" onclick="add_string(7)">7</div>
+        <div class="btn" onclick="add_string(8)">8</div>
+        <div class="btn" onclick="add_string(9)">9</div>
+        <div class="btn" onclick="add_string('A')">A</div>
+        <div class="btn" onclick="add_string('B')">B</div>
+        <div class="btn" onclick="add_string('C')">C</div>
+        <div class="btn" onclick="add_string('D')">D</div>
+        <div class="btn" onclick="add_string('E')">E</div>
+        <div class="btn" onclick="add_string('F')">F</div>
+        <div class="btn_long" onclick="reset_all()">Clear</div>
+        <div class="btn_long" onclick="convert()">Convert</div>
+    </div>
+    <p style="align-self: end;margin-top: 100px;">
+        (1)btn 및 input은 div tag를 이용해 표현하였고, n진수 표현은 select, option tag를 이용해 구현하였습니다.<br>
+        전체 body는 display:flex, justify-content, align-items등을 통해 정렬했고, flex-direction은 column입니다.<br>
+        모두 class를 통해 css파일을 작성했으며, hover 옵션, 두 클래스가 같이 있을 때 옵션 등을 추가하였습니다.<br>
+        JS는 모두 id를 통해 인자를 전달받았으며, input값, output값을 설정했습니다. convert 버튼을 누르면 convert함수가 실행되어 값을 출력합니다.<br>
+        사용 방법은, 각 버튼을 누름으로써 input에 값이 저장됩니다. reset을 누르면 input, output이 모두 초기화되고 convert를 누르면 설정한 진수대로<br>
+        값이 변환됩니다. 단, input에서 설정한 진수보다 들어가는 값이 크거나 같다면, alert가 뜸과 동시에 함수가 실행되지 않습니다.<br><br>
+        (2)Convert버튼을 눌렀을 때 동작은 다음과 같습니다. 우선 입력된 숫자가 올바른지를 확인합니다. 숫자들은 배열 형태로 저장되어있는데, 각 배열 안에 있는<br>
+        데이터의 자료형을 보고 조건문으로 넘어갑니다. 만약 typeof(string[key]) === number, 즉 0~9라면, 설정한 input진수값과 비교하여 input 진수보다<br>
+        작은지 확인합니다. 만약 작지않다면, 옳지 않은 수를 입력했으므로 경고 문구를 출력하고 함수를 종료합니다.<br>
+        만약 typeof(string[key]) === string이라면, string[key]의 아스키 값을 받아 거기서 55를 빼준 값을 input 진수 값과 비교합니다. 이때 사용한 함수는<br>
+        charCodeAt입니다. 예시로, 'A'를 입력받았다면, A의 아스키 코드는 65이므로 55를 뺀 값은 10입니다. 만약 설정한 진수가 10이라면, A는 10진수에서 사용될 수 없는 숫자이므로<br>
+        경고문구를 출력하고 함수를 종료합니다.<br>
+        위 조건을 모두 만족하여 올바른 숫자를 입력받았다면, 해당 숫자를 10진수로, 그리고 10진수를 output 진수로 바꾸는 작업을 수행합니다.<br>
+        해당 숫자를 10진수로 바꿀 떄는 parseInt(num, input진수)를 수행, 10진수를 output진수로 바꿀 때는 10진수.toString(output진수)를 수행합니다.<br>
+        이후 output div의 innerText를 해당 값으로 바꿔줌으로써 convert는 종료됩니다.<br><br>
+        (3) 디자인에서 신경 쓴 것은 '색깔간의 조화, 그리고 실제 버튼이 눌리는 느낌을 주자' 입니다. 배경색과 문구, 그리고 계산기 색깔은 모두 고려대학교의 상징 색깔을 활용했습니다.<br>
+        그리고, box-shadow 기능을 통해, 실제 버튼이 눌리는 것과 유사한 효과를 주었습니다. 눌리기 전은 마치 버튼이 앞으로 나와있는 것 처럼, 눌린 후는 버튼이 뒤로 눌린 것 같은 shadow 효과를 주었습니다.<br>
+        (4) 1234(5) -> 14 system: dc<br>
+        (5) 이스터에그는, 그 전에 어떤 버튼을 눌렀든 상관없이 'ADD1234' 순서로 버튼이 눌렸다면, 계산기가 한번에 움직입니다. 색깔을 바꾸면서<br>
+        상하좌우로 움직입니다.<br>
+        (6)public code는 쓰지 않았습니다.
+
+    </p>
+</body>
+<script>
+    let string = [];
+    let easterString = [];
+    let easterRealString;
+    let result;
+    let exp = document.getElementById("input");
+    let res = document.getElementById("output");
+    let from = 2;
+    let to = 2;
+    const changeFrom = (target) =>{
+        from = target.value;
+    }
+    const changeTo = (target) =>{
+        to = target.value;
+        console.log(to)
+    }
+    function add_string(a){
+        string.push(a);
+        easterString.push(a);
+        easterRealString = easterString.join("");
+        runEaster();
+        exp.innerText = string.join("");
+    }
+    function runEaster(){
+        if(easterRealString.includes('ADD1234')){
+            easterString = [];
+            easterRealString = null;
+            document.getElementById("grid").classList.add("animation");
+            console.log('easteregg!');
+        }
+    }
+    function convert(){
+        for (const key in string) {
+            if(typeof(string[key]) === 'number'){
+                if (string[key] >= from) {
+                alert('please try to convert other number. you cant convert by this number system.');
+                return;
+                
+            }
+            }
+            else{
+                if(string[key].charCodeAt() - 55 >= from){
+                    alert('please try to convert other number. you cant convert by this number system.');
+                    return;
+                }
+            }
+            
+        }
+        let num = string.join("");
+        let decimal = parseInt(num,from);
+        let result = decimal.toString(to);
+        res.innerText = result;
+        return result;
+        
+    }
+    function delete_btn(){
+        string.pop();
+        exp.innerText = string.join("");
+    }
+    function reset_all(){
+        string = [];
+        easterString = [];
+        easterRealString = null;
+        result = '';
+        exp.innerText = string.join("");
+        res.innerHTML = result;
+    }
+    </script>
+</html>
